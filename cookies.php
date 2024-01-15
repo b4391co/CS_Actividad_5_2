@@ -7,8 +7,27 @@
     <title>Creador de cookies</title>
 </head>
 <body>
-    <form action="" method="post">
-
-    </form>
+    <h1>Introduzca datos para crear una cookie</h1>
+<form>
+  <div class="form-group">
+    <div class="col-3">
+        <label for="exampleInputEmail1">Cookie name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-3">
+        <label for="exampleInputPassword1">Cookie value</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-3">
+        <label for="exampleInputPassword1">Cookie expiration seconds</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Añadir cookie</button>
+</form>
 </body>
 </html>
