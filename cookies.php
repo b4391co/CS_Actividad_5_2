@@ -8,26 +8,31 @@
 </head>
 <body>
     <h1>Introduzca datos para crear una cookie</h1>
-<form>
+<form method="post">
   <div class="form-group">
     <div class="col-3">
         <label for="exampleInputEmail1">Cookie name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="cookieName" name="cookieName">
     </div>
   </div>
   <div class="form-group">
     <div class="col-3">
         <label for="exampleInputPassword1">Cookie value</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="text" class="form-control" id="cookieVal" name="cookieVal">
     </div>
   </div>
   <div class="form-group">
     <div class="col-3">
         <label for="exampleInputPassword1">Cookie expiration seconds</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
+        <input type="number" class="form-control" id="expirationTime" name="expirationTime">
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Añadir cookie</button>
 </form>
+<?php
+if (isset($_POST["cookieName"]) && isset($_POST["cookieVal"])){
+    setcookie($_POST["cookieName"], $_POST["cookieVal"], $_POST["expirationTime"]);
+}
+?>
 </body>
 </html>
