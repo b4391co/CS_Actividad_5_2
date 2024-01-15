@@ -31,8 +31,14 @@
 </form>
 <?php
 if (isset($_POST["cookieName"]) && isset($_POST["cookieVal"])){
-    setcookie($_POST["cookieName"], $_POST["cookieVal"], $_POST["expirationTime"]);
+  $cookieName = $_POST['cookieName'];
+  setcookie("cookiesTabla[$cookieName]", $_POST["cookieVal"], $_POST["expirationTime"]);
 }
+
+if (isset($_COOKIE['cookiesTabla']))
+  include_once("tabla_cookies");
+?>
+
 ?>
 </body>
 </html>
