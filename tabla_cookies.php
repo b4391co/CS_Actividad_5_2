@@ -1,7 +1,13 @@
 <?php
-setcookie("cookieTest[uno]", 1, time() + 3600);
-setcookie("cookieTest[dos]", 2, time() + 3600);
-setcookie("cookieTest[tres]", 3, time() + 3600);
+//setcookie("cookieTest[uno]", 1, time() + 3600);
+//setcookie("cookieTest[dos]", 2, time() + 3600);
+//setcookie("cookieTest[tres]", 3, time() + 3600);
+
+if (isset($_COOKIE["cookieTest"])) {
+    if(isset($_POST["btn-eliminar"])){
+        unset($_COOKIE['cookieTest']);
+    } 
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +30,16 @@ setcookie("cookieTest[tres]", 3, time() + 3600);
         </thead>
         <tbody>
 <?php
+        if(isset($_COOKIE['cookieTest'])){
             foreach ($_COOKIE['cookieTest'] as $key => $value) {
                 echo "<tr><td>$key</td><td>$value</td></tr>";
             }
+        }
 ?>
         </tbody>
     </table>
-
+    <form method="post">
+        <button  type="submit" class="btn btn-danger" name="btn-eliminar">Eliminar</button>
+    </form>
 
 </html>
