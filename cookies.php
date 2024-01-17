@@ -12,33 +12,36 @@
   <div class="form-group">
     <div class="col-3">
         <label for="exampleInputEmail1">Cookie name</label>
-        <input type="text" class="form-control" id="cookieName" name="cookieName">
+        <input type="text" class="form-control" id="cookieName" name="cookieName" required>
     </div>
   </div>
   <div class="form-group">
     <div class="col-3">
         <label for="exampleInputPassword1">Cookie value</label>
-        <input type="text" class="form-control" id="cookieVal" name="cookieVal">
+        <input type="text" class="form-control" id="cookieVal" name="cookieVal" required>
     </div>
   </div>
   <div class="form-group">
     <div class="col-3">
         <label for="exampleInputPassword1">Cookie expiration seconds</label>
         <input type="number" class="form-control" id="expirationTime" name="expirationTime">
+      </div>
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Añadir cookie</button>
-</form>
-<?php
+    <button type="submit" class="btn btn-primary">Añadir cookie</button>
+  </form>
+  <?php
 if (isset($_POST["cookieName"]) && isset($_POST["cookieVal"])){
   $cookieName = $_POST['cookieName'];
-  setcookie("cookiesTabla[$cookieName]", $_POST["cookieVal"], $_POST["expirationTime"]);
+  $cookieVal = $_POST["cookieVal"];
+  if ($_POST["expirationTime"] != "")
+    $expTime = time() + $_POST["expirationTime"];
+  else $expTime = 0;
+  setcookie("cookiesTabla[$cookieName]" , $cookieVal, $expTime);
+  header("Refresh:0");
 }
-
+//var_dump($_COOKIE["hola"]);
 if (isset($_COOKIE['cookiesTabla']))
-  include_once("tabla_cookies");
-?>
-
+include_once "tabla_cookies.php";
 ?>
 </body>
 </html>
